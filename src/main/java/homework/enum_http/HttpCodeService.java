@@ -8,8 +8,7 @@ public class HttpCodeService {
     public void processHttp(String text) {
         //todo dgasfdjgsafd  httpcode: 404   sjdghfkjdshgafsdah
         int httpCode = getHttpCode(text);
-        Map<Integer, HttpCodes> map = createHttpCodesMap();
-        map.get(httpCode / 100).codeReaction(httpCode);
+        System.out.println(HttpCodes.getStatus(httpCode));
     }
 
     private int getHttpCode(String text) {
@@ -19,17 +18,6 @@ public class HttpCodeService {
         }
 
         return Integer.parseInt(text.substring(endOfKeyWord, endOfKeyWord + 3));
-    }
-
-    private static Map<Integer, HttpCodes> createHttpCodesMap() {
-        Map<Integer, HttpCodes> map = new HashMap<>();
-        map.put(1, HttpCodes.INFORMATIONAL);
-        map.put(2, HttpCodes.SUCCESS);
-        map.put(3, HttpCodes.REDIRECTION);
-        map.put(4, HttpCodes.CLIENT_ERROR);
-        map.put(5, HttpCodes.SERVER_ERROR);
-
-        return map;
     }
 
 }

@@ -1,27 +1,17 @@
 package homework.enum_http;
 
 public enum HttpCodes {
-    INFORMATIONAL {
-        @Override void codeReaction(int code){
-            System.out.println("Informational with code: " + code);
-        }
-    }, SUCCESS {
-        @Override void codeReaction(int code){
-            System.out.println("Success with code: " + code);
-        }
-    }, REDIRECTION {
-        @Override void codeReaction(int code){
-            System.out.println("Redirection with code: " + code);
-        }
-    }, CLIENT_ERROR {
-        @Override void codeReaction(int code){
-            System.out.println("ClientError with code: " + code);
-        }
-    }, SERVER_ERROR {
-        @Override void codeReaction(int code){
-            System.out.println("ServerError with code: " + code);
-        }
-    };
+    INFORMATIONAL, SUCCESS, REDIRECTION, CLIENT_ERROR, SERVER_ERROR;
 
-    abstract void codeReaction(int code);
+    static HttpCodes getStatus(int code){
+        code = code / 100;
+        HttpCodes[] values = values();
+        for (int i = 0; i < values.length; i++) {
+            if (code == i + 1) {
+                return values[i];
+            }
+        }
+        return null;
+    }
+
 }
