@@ -1,10 +1,10 @@
 package date_time;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.TextStyle;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Locale;
@@ -15,46 +15,36 @@ import java.util.Locale;
 public class Main {
 
 
-    public Date convert(LocalDate date) {
-        // todo finish this
-        return null;
+    public static Date convert(LocalDate date) {
+        return java.util.Date.from(date.atStartOfDay()
+                .atZone(ZoneId.systemDefault())
+                .toInstant());
     }
 
-    public LocalDateTime convert(Date date) {
-        // todo finish this
-        return null;
+    public static LocalDateTime convert(Date date) {
+        return date.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
     }
 
-        // 1981/02/30&18:20
-    public static int daysBetween(String firstDate, String lastDate) {
-        //JSR 310
-        //todo finish this
-        return 0;
-    }
+    // 1981/02/30&18:20
+    public static long daysBetween(String firstDate, String lastDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd&HH:mm", Locale.ENGLISH);
+        LocalDate first = LocalDate.parse(firstDate, formatter);
+        LocalDate last = LocalDate.parse(lastDate, formatter);
 
+        return ChronoUnit.DAYS.between(first, last);
+    }
 
 
     public static void main(String[] args) {
+        System.out.println(daysBetween("1981/02/20&18:20", "2020/08/05&11:20"));
 
-
-
-        LocalTime now1 = LocalTime.now();
-//        LocalDateTime.of(1932,12,12,12,12,12)
         LocalDate now = LocalDate.now();
-        LocalDate yest = now.minusDays(1);
-        LocalDate date = now.withYear(2010);
-        String displayName = date.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
-        System.out.println("displayName = " + displayName);
+        Date nowInDate = convert(now);
+        System.out.println(nowInDate);
 
-//        Duration
-        long between = ChronoUnit.DAYS.between(date, now);
-        System.out.println("between = " + between);
-
-//
-//        String str = "java";
-//        str = str.toUpperCase();
-//
-//        Date date = new Date();
-//        System.out.println("date = " + date.getYear());
+        LocalDateTime nowInDateTime = convert(nowInDate);
+        System.out.println(nowInDateTime);
     }
 }
