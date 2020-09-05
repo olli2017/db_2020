@@ -7,7 +7,7 @@ public class Main {
         Examinator examinator = new Examinator(1);
         List<Exercise> exerciseList = examinator.generate(5);
         for (Exercise e : exerciseList) {
-            System.out.println(Examinator.exerciseToString(e));
+            System.out.println(e);
         }
     }
 }

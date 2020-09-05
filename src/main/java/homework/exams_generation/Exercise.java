@@ -19,4 +19,10 @@ public class Exercise {
     private Operator operator;
 
 
+    @Override
+    public String toString() {
+        return "Exercise{" +
+                a + " " + operator.getSign() + " " + b + " = " + answer +
+                '}';
+    }
 }
