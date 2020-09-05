@@ -1,5 +1,6 @@
 package homework.exams_generation;
 
+import homework.exams_generation.levels.Level1;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
@@ -23,6 +24,13 @@ public class Examinator {
     }
 
     private Exercise getRandomExcerciseByLevel() {
-        return new Exercise(2, 3, 5, Operator.PLUS);
+        if (level == 1) {
+            return new Level1().getRandomExercise();
+        }
+        return null;
+    }
+
+    public static String exerciseToString(Exercise e) {
+        return e.getA() + " " + e.getOperator().getSign() + " " + e.getB() + " = " + e.getAnswer();
     }
 }
