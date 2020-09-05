@@ -1,9 +1,7 @@
 package homework.exams_generation;
 
-import homework.exams_generation.HasLevel;
-import homework.never_use_switch.DefaultMailSender;
-import homework.never_use_switch.MailInfo;
-import homework.never_use_switch.MailSender;
+import homework.exams_generation.levels.DefaultLevel;
+import homework.exams_generation.levels.HasLevel;
 import lombok.SneakyThrows;
 import org.reflections.Reflections;
 
@@ -12,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class LevelsDistributor {
-    private Map<Integer, HasLevel> levelsMap = new HashMap<>();
+    private final Map<Integer, HasLevel> levelsMap = new HashMap<>();
 
 
     @SneakyThrows
@@ -28,8 +26,8 @@ public class LevelsDistributor {
         }
     }
 
-    public Exercise generateByLevel(int level) {
-        HasLevel hasLevel = levelsMap.getOrDefault(level, null);
-        return hasLevel.getRandomExercise();
+    public Exercise generateExerciseByLevel(int level) {
+        HasLevel hasLevel = levelsMap.getOrDefault(level, new DefaultLevel());
+        return hasLevel.generateExercise();
     }
 }

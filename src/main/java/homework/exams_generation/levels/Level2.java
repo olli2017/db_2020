@@ -1,16 +1,14 @@
 package homework.exams_generation.levels;
 
 import homework.exams_generation.Exercise;
-import homework.exams_generation.HasLevel;
 import homework.exams_generation.Operator;
+import homework.exams_generation.utils.LevelsUtils;
 
-import java.util.Random;
-
-
+// 2-digits number with plus/minus
 public class Level2 implements HasLevel {
-    Random random = new Random();
 
-    public Exercise getRandomExercise() {
+    @Override
+    public Exercise generateExercise() {
         int firstOperand = random.nextInt(myCode() * 10);
         int secondOperand = random.nextInt(myCode() * 10);
         Operator operator = LevelsUtils.randomPlusMinusOperator();

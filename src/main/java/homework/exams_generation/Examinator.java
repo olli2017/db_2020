@@ -17,13 +17,13 @@ public class Examinator {
     public List<Exercise> generate(int amount) {
         List<Exercise> exercises = new ArrayList<>(amount);
         for (int i = 0; i < amount; i++) {
-            exercises.add(getRandomExerciseByLevel());
+            exercises.add(generateExercise());
         }
 
         return exercises;
     }
 
-    private Exercise getRandomExerciseByLevel() {
-        return levelsDistributor.generateByLevel(level);
+    private Exercise generateExercise() {
+        return levelsDistributor.generateExerciseByLevel(level);
     }
 }

@@ -21,8 +21,6 @@ public class Exercise {
 
     @Override
     public String toString() {
-        return "Exercise{" +
-                a + " " + operator.getSign() + " " + b + " = " + answer +
-                '}';
+        return a + " " + operator.getSign() + " " + b + " = " + answer;
     }
 }

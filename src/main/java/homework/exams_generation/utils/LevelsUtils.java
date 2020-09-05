@@ -1,4 +1,4 @@
-package homework.exams_generation.levels;
+package homework.exams_generation.utils;
 
 import homework.exams_generation.Operator;
 
