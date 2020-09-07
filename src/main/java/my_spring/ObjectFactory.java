@@ -10,10 +10,7 @@ import java.util.Map;
 public class ObjectFactory {
 
 
-    private Map<Class, Class> ifc2DefaultImplClass = Map.of(
-            Speaker.class, ConsoleSpeaker.class,
-            Cleaner.class, CleanerImpl.class
-    );
+    private Map<Class, Class> ifc2DefaultImplClass = InitializeIfc2DefaultImplClassMap.getMap();
 
 
     private static ObjectFactory objectFactory = new ObjectFactory();
@@ -31,7 +28,6 @@ public class ObjectFactory {
         // if type is concrete class, just create and return it's instance
         //if type is and interface, you should find appropriative impl.
         if (type.isInterface()) {
-//            ifc2ImplClass.get(type).getDeclaredConstructor().newInstance();
             return ifc2DefaultImplClass.get(type).getDeclaredConstructor().newInstance();
         }
         return type.getDeclaredConstructor().newInstance();
