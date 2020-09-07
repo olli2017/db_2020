@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
  */
 public class IRobot {
 
+    private TestingSingleton testingSingleton;
+
     @InjectRandomInt(max = 10,min = 1)
     private int version;
 

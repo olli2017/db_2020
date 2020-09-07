@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
  */
 public class CleanerImpl implements Cleaner {
 
+    private TestingSingleton testingSingleton;
 
     @InjectRandomInt(min = 3, max = 10)
     private int repeat;

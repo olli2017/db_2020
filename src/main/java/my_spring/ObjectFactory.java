@@ -1,13 +1,11 @@
 package my_spring;
 
-import heroes.RandomUtil;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import org.reflections.ReflectionUtils;
 import org.reflections.Reflections;
 
 import javax.annotation.PostConstruct;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -66,24 +64,6 @@ public class ObjectFactory {
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     private <T> void configure(T t) {
         objectConfigurers.forEach(objectConfigurer -> objectConfigurer.configure(t));

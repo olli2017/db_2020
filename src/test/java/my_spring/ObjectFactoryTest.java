@@ -34,6 +34,14 @@ public class ObjectFactoryTest {
         SuperHero superHero = ObjectFactory.getInstance().createObject(SuperHero.class);
         Assert.assertEquals(Batman.class, superHero.getClass());
     }
+
+    @Test
+    public void singletonObjectsEqualInDifferentClasses() {
+        Soldier soldier = ObjectFactory.getInstance().createObject(Soldier.class);
+        Soldier2Clone soldier2Clone = ObjectFactory.getInstance().createObject(Soldier2Clone.class);
+
+        Assert.assertEquals(soldier.getTestingSingleton(), soldier2Clone.getTestingSingleton());
+    }
 }
 
 
