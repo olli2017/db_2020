@@ -3,18 +3,11 @@ package real_spring.quoters;
 import heroes.RandomUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 /**
  * @author Evgeny Borisov
  */
 @RequiredArgsConstructor
-@Component
-@Scope
-@Lazy
 public class IntegerFactory implements FactoryBean<Integer> {
 
     private final int min,max;
